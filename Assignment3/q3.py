@@ -10,5 +10,11 @@ def average(*nums) -> float:
 
 
 if __name__ == "__main__":
-    print(average(1, 2, 4, 5, 6))
-    print(average(1, 2, 5, 6))
+    try:
+        print(average())
+    except ZeroDivisionError:
+        print("Division by Zero is not allowed")
+    try:
+        print(average(1, 2, 5, 6))
+    except ZeroDivisionError as e:
+        print("Division by Zero is not allowed")

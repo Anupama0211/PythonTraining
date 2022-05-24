@@ -13,10 +13,7 @@ Sample Output: - [+91 7895 460 981, +91 9711 231 230, +91 9711 540 230]
 def decorate_mobile_numbers(func):
     def standardize_mobile_numbers(mobile_numbers):
         for i in range(len(mobile_numbers)):
-            if (len(mobile_numbers[i]) == 12):
-                mobile_numbers[i] = mobile_numbers[i][2:12]
-            elif (len(mobile_numbers[i]) == 11):
-                mobile_numbers[i] = mobile_numbers[i][1:11]
+            mobile_numbers[i] = mobile_numbers[i][-10:]
             mobile_numbers[i] = "+91 " \
                                 + " " + mobile_numbers[i][0:4] \
                                 + " " + mobile_numbers[i][4:7] \
