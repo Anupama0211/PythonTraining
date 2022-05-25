@@ -4,8 +4,8 @@ and prints all the lines which are longer than 30 characters using generators.
 """
 
 
-def generator(filenames):
+def generator(*filenames):
     for filename in filenames:
-        if filename > 30:
+        if len(filename) > 30:
             yield filename
 
