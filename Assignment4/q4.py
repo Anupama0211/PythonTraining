@@ -10,9 +10,9 @@ class Decorator:
 
     def __call__(self, number1, number2):
         try:
-            return self.function(number1, number2)
+            print(self.function(number1, number2))
         except ZeroDivisionError as e:
-            return e
+            print("Division by 0 is not allowed")
 
 
 @Decorator
@@ -20,5 +20,5 @@ def division(number1, number2):
     return number1 / number2
 
 
-print(division(7, 8))
-print(division(7, 0))
+division(7, 8)
+division(7, 0)

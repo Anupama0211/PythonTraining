@@ -10,6 +10,5 @@ def even_nums_generator():
         i += 2
 
 
-gen_obj = even_nums_generator()
-for i in gen_obj:
-    print(i)
+for even_num in even_nums_generator():
+    print(even_num)
