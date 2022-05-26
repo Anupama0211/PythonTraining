@@ -12,6 +12,6 @@ class CountInstances:
 
 obj1 = CountInstances()
 obj2 = CountInstances()
-obj2 = CountInstances()
+obj3 = CountInstances()
 
 print(CountInstances.count)
