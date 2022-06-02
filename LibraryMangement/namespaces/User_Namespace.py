@@ -20,7 +20,7 @@ user = users_ns.model('User', {
 
 @users_ns.route('/<username>')
 class User(Resource):
-    @users_ns.response(200, "Succesful", model=user)
+    @users_ns.response(200, "Successful", model=user)
     def get(self, username):
         user_data = UserModel.find_by_username(username)
         if user_data:
@@ -34,7 +34,7 @@ class User(Resource):
 class UserList(Resource):
     @users_ns.response(200, "Successful", model=user)
     def get(self):
-        return user_schema.dump(UserModel.find_all()), 200
+        return users_schema.dump(UserModel.find_all()), 200
 
     @users_ns.expect(user)
     @users_ns.response(201, "Created", model=user)

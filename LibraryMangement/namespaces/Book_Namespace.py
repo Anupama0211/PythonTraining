@@ -10,6 +10,7 @@ book_schema = BookSchema()
 books_schema = BookSchema(many=True)
 
 book = books_ns.model('Book', {
+    'id': fields.Integer,
     'name': fields.String('Name of the book'),
     'publisher': fields.String('Name of publisher'),
     'author': fields.String('Name of the author')
