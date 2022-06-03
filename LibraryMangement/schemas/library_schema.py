@@ -1,5 +1,5 @@
 from ma import ma
-from models.Library_Model import LibraryModel
+from models.library_model import LibraryModel
 
 
 class LibrarySchema(ma.SQLAlchemyAutoSchema):

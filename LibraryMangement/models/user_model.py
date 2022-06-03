@@ -9,17 +9,16 @@ class UserModel(db.Model):
     name = db.Column(db.String(100), nullable=False)
     email = db.Column(db.String(100), nullable=False, unique=True)
 
+    def __init__(self,username,name,email):
+        self.username=username
+        self.name=name
+        self.email=email
 
-    def __init__(self, username, name, email):
-        self.username = username
-        self.name = name
-        self.email = email
+    def add_books(self, books):
+        self.books = books
 
-    def __repr__(self):
+    def __str__(self):
         return 'UsersModel(username=%s, name=%s,email=%s)' % (self.username, self.name, self.email)
-
-    def json(self):
-        return {'username': self.username, 'name': self.name, 'email': self.email}
 
     @classmethod
     def find_by_username(cls, username) -> "UserModel":

@@ -1,10 +1,10 @@
 from ma import ma
-from models.User_Model import UserModel
-from schemas.Book_Schema import BookSchema
+from models.user_model import UserModel
+from schemas.book_schema import BookSchema
 
 
 class UserSchema(ma.SQLAlchemyAutoSchema):
-    items = ma.Nested(BookSchema, many=True)
+    books = ma.Nested(BookSchema, many=True)
 
     class Meta:
         model = UserModel

@@ -1,15 +1,16 @@
-from flask import Flask, jsonify
+from flask import Flask,jsonify
 from marshmallow import ValidationError
+
 from ma import ma
+from middleware import init_middlewares
 from namespaces import api
 from db import db
-
 app = Flask(__name__)
 
-username = "root"
-password = "abcdef"
-server = "localhost:3306"
-app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql+mysqlconnector://{username}:{password}@{server}/library_management'
+USERNAME = "root"
+PASSWORD = "abcdef"
+SERVER = "localhost:3306"
+app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql+mysqlconnector://{USERNAME}:{PASSWORD}@{SERVER}/library_management'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['PROPAGATE_EXCEPTIONS'] = True
 
@@ -25,6 +26,7 @@ def handle_validation_error(error):
 
 
 if __name__ == '__main__':
+    init_middlewares(app)
     api.init_app(app)
     db.init_app(app)
     ma.init_app(app)
