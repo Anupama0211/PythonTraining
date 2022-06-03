@@ -19,7 +19,8 @@ book = books_ns.model('Book', {
 @books_ns.route('/')
 class BooksList(Resource):
 
-    @books_ns.response(200, 'Successful', model=book)
+    @books_ns.response(200, 'Successful', model=[book])
+    @books_ns.doc(id='get_something')
     def get(self):
         return books_schema.dump(BookModel.find_all()), 200
 

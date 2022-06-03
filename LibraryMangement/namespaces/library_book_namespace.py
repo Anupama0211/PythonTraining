@@ -11,7 +11,7 @@ URL = "http://127.0.0.1:5000/books"
 @library_book_ns.route("/")
 class LibraryBooks(Resource):
 
-    @library_book_ns.response(200, "Successful", model=book)
+    @library_book_ns.response(200, "Successful", model=[book])
     def get(self):
         response = requests.get(URL)
         return response.json(), response.status_code

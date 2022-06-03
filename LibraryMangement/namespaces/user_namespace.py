@@ -1,5 +1,5 @@
 from flask import request
-from flask_restx import Resource, fields, Namespace
+from flask_restx import Resource, fields, Namespace, abort
 from schemas.user_schema import UserSchema
 from models.user_model import UserModel
 from db import db
@@ -19,6 +19,26 @@ user = users_ns.model('User', {
 })
 
 
+@users_ns.route('/')
+class UserList(Resource):
+
+    @users_ns.response(200, "Successful", model=[user])
+    def get(self):
+        return users_schema.dump(UserModel.find_all()), 200
+
+    @users_ns.expect(user)
+    @users_ns.response(201, "Created", model=user)
+    @users_ns.response(400, "Bad Request")
+    def post(self):
+        try:
+            user_json = request.get_json()
+            user_object = user_schema.load(user_json, session=db.session)
+            user_object.save_to_db()
+            return user_schema.dump(user_object), 201
+        except:
+            abort(400, "Email already used!")
+
+
 @users_ns.route('/<username>')
 class User(Resource):
 
@@ -31,20 +51,3 @@ class User(Resource):
         else:
             response = {'message': USER_NOT_FOUND}, 404
         return response
-
-
-@users_ns.route('/')
-class UserList(Resource):
-
-    @users_ns.response(200, "Successful", model=user)
-    def get(self):
-        return users_schema.dump(UserModel.find_all()), 200
-
-    @users_ns.expect(user)
-    @users_ns.response(201, "Created", model=user)
-    def post(self):
-        user_json = request.get_json()
-        user_object = user_schema.load(user_json, session=db.session)
-        user_object.save_to_db()
-
-        return user_schema.dump(user_object), 201
