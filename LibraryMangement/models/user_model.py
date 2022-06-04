@@ -1,7 +1,10 @@
 from flask_restx import abort
+from sqlalchemy.exc import IntegrityError
 
 from db import db
 from typing import List
+
+from exceptions.invalid_operation_exception import InvalidOperationException
 
 
 class UserModel(db.Model):
@@ -31,5 +34,8 @@ class UserModel(db.Model):
         return cls.query.all()
 
     def save_to_db(self) -> None:
-        db.session.add(self)
-        db.session.commit()
+        try:
+            db.session.add(self)
+            db.session.commit()
+        except IntegrityError:
+            raise InvalidOperationException("Email is already used!!")

@@ -1,10 +1,12 @@
-from flask import Flask,jsonify
+from flask import Flask
 from marshmallow import ValidationError
 
+from exceptions.invalid_operation_exception import InvalidOperationException
 from ma import ma
 from middleware import init_middlewares
 from namespaces import api
 from db import db
+
 app = Flask(__name__)
 
 USERNAME = "root"
@@ -22,7 +24,12 @@ def create_tables():
 
 @api.errorhandler(ValidationError)
 def handle_validation_error(error):
-    return jsonify(error.messages), 400
+    return {'message': error}, 400
+
+
+@api.errorhandler(InvalidOperationException)
+def handle_validation_error(error):
+    return {'message': error.message}, 400
 
 
 if __name__ == '__main__':

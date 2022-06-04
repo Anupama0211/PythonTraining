@@ -16,7 +16,7 @@ class LibraryBooks(Resource):
         response = requests.get(URL)
         return response.json(), response.status_code
 
-    @library_book_ns.expect(book)
+    @library_book_ns.expect(book,validate=True)
     @library_book_ns.response(201, "Created", model=book)
     def post(self):
         book_json = request.get_json()

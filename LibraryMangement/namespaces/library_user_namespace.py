@@ -1,6 +1,6 @@
 import requests
 from flask import request
-from flask_restx import Resource, Namespace, abort, fields
+from flask_restx import Resource, Namespace, fields
 
 from models.library_model import LibraryModel
 from namespaces.user_namespace import user
@@ -33,7 +33,7 @@ class LibraryUsers(Resource):
         response = requests.get(URL_USERS)
         return response.json(), response.status_code
 
-    @library_user_ns.expect(user)
+    @library_user_ns.expect(user, validate=True)
     @library_user_ns.response(201, "Successful", model=user)
     @library_user_ns.response(400, "Bad Request")
     def post(self):
@@ -70,15 +70,12 @@ class IssueBook(Resource):
     @library_user_ns.response(400, "Bad Request")
     @library_user_ns.response(404, "Not Found")
     def post(self, username, book_id):
-        try:
-            book_response = requests.get(URL_BOOKS + f"/{book_id}")
-            user_response = requests.get(URL_USERS + f"/{username}")
-            if book_response.status_code == 200 and user_response.status_code == 200:
-                library_model = LibraryModel(username, book_id)
-                library_model.save_to_db()
-                response = library_user_schema.dump(library_model), 201
-            else:
-                response = book_response.json() | user_response.json(), 404
-            return response
-        except:
-            abort(400, "Book is already Issued")
+        book_response = requests.get(URL_BOOKS + f"/{book_id}")
+        user_response = requests.get(URL_USERS + f"/{username}")
+        if book_response.status_code == 200 and user_response.status_code == 200:
+            library_model = LibraryModel(username, book_id)
+            library_model.save_to_db()
+            response = library_user_schema.dump(library_model), 201
+        else:
+            response = book_response.json() | user_response.json(), 404
+        return response
