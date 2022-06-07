@@ -6,7 +6,7 @@ Expected output :
 64
 …
 """
-from multiprocessing import Queue, Process, Lock
+from multiprocessing import Queue, Process
 
 
 def cube(x, queue):
