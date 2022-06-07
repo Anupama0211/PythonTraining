@@ -23,8 +23,8 @@ def increase(by):
         print(f'counter={counter}')
 
 
-t1 = threading.Thread(target=increase, args=(10,))
-t2 = threading.Thread(target=increase, args=(20,))
+thread1 = threading.Thread(target=increase, args=(10,))
+thread2 = threading.Thread(target=increase, args=(20,))
 
 t1.start()
 t2.start()

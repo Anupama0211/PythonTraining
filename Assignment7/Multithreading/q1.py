@@ -14,10 +14,10 @@ import time
 from threading import Thread
 
 
-def square(num):
-    for n in num:
+def square(nums):
+    for num in nums:
         time.sleep(1)
-        print(' Square is : ', n * n)
+        print(' Square is : ', num * num)
 
 
 def cube(nums):
