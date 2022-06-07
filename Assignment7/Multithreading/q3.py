@@ -6,7 +6,6 @@ counter=30
 The final counter is 30
 """
 import threading
-from threading import Thread
 from time import sleep
 
 counter = 0
@@ -24,8 +23,8 @@ def increase(by):
         print(f'counter={counter}')
 
 
-t1 = Thread(target=increase, args=(10,))
-t2 = Thread(target=increase, args=(20,))
+t1 = threading.Thread(target=increase, args=(10,))
+t2 = threading.Thread(target=increase, args=(20,))
 
 t1.start()
 t2.start()

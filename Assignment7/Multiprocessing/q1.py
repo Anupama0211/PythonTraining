@@ -17,8 +17,8 @@ if __name__ == "__main__":
     queue = Queue()
 
     processes = []
-    for i in range(1, 51):
-        process = Process(target=cube, args=(i, queue))
+    for num in range(1, 51):
+        process = Process(target=cube, args=(num, queue))
         process.start()
         process.join()
 

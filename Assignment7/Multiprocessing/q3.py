@@ -9,7 +9,7 @@ async def square(num):
 
 
 async def main():
-    list = [10 ** i for i in range(7)]
+    list = [10 ** num for num in range(7)]
     for i in list:
         await square(i)
 

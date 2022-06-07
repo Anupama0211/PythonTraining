@@ -20,10 +20,10 @@ def square(num):
         print(' Square is : ', n * n)
 
 
-def cube(num):
-    for n in num:
+def cube(nums):
+    for num in nums:
         time.sleep(1)
-        print(" Cube is : ", n * n * n)
+        print(" Cube is : ", num * num * num)
 
 
 ar = [1, 2, 3]
