@@ -13,6 +13,6 @@ def test_validate_principal(sample_simple_interest):
     [({'principal': 100, 'months': 20, 'roi': 6})],
     indirect=['sample_simple_interest_with_params'])
 def test_validate_principal_raises_error(sample_simple_interest_with_params):
-    with pytest.raises(ValueError) as exe:
+    with pytest.raises(ValueError) as error:
         assert sample_simple_interest_with_params.validate_principal() == 100
-        assert exe.value == f"Principal amount has to be between 1000 and 100000"
+        assert error.value == "Principal amount has to be between 1000 and 100000"
