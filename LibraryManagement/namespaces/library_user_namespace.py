@@ -26,7 +26,7 @@ library = library_user_ns.model('Library ', {
 })
 
 
-@library_user_ns.route("/")
+@library_user_ns.route("")
 class LibraryUsers(Resource):
     @library_user_ns.response(200, "Successful", model=[user])
     def get(self):

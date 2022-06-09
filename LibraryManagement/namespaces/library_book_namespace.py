@@ -8,7 +8,7 @@ library_book_ns = Namespace("library/books", description="Library book related o
 URL = "http://127.0.0.1:5001/books"
 
 
-@library_book_ns.route("/")
+@library_book_ns.route("")
 class LibraryBooks(Resource):
 
     @library_book_ns.response(200, "Successful", model=[book])

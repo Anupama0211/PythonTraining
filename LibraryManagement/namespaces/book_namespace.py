@@ -17,7 +17,7 @@ book = books_ns.model('Book', {
 })
 
 
-@books_ns.route('/')
+@books_ns.route("")
 class BooksList(Resource):
 
     @books_ns.response(200, 'Successful', model=[book])

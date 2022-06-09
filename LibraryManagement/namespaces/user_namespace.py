@@ -19,7 +19,7 @@ user = users_ns.model('User', {
 })
 
 
-@users_ns.route('/')
+@users_ns.route("")
 class UserList(Resource):
 
     @users_ns.response(200, "Successful", model=[user])

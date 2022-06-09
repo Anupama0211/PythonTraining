@@ -20,6 +20,6 @@ def test_book_not_found(client):
 
 def test_books_list(client):
     BookModel.find_all = Mock(return_value=[{"name": "Book"}])
-    response = client.get("/books/")
+    response = client.get("/books")
     print(response.data)
     assert response.status_code == 200
