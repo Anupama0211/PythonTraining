@@ -2,7 +2,7 @@ from typing import List
 
 from sqlalchemy.exc import IntegrityError
 
-from db import db
+from project.db import db
 from exceptions.invalid_operation_exception import InvalidOperationException
 
 

@@ -8,7 +8,7 @@ from schemas.library_schema import LibrarySchema
 from schemas.user_schema import UserSchema
 from schemas.book_schema import BookSchema
 
-from db import db
+from project.db import db
 
 library_user_ns = Namespace("library/users", description="Library user related operations")
 library_user_schema = LibrarySchema()
@@ -16,8 +16,8 @@ library_users_schema = LibrarySchema(many=True)
 user_schema = UserSchema()
 book_schema = BookSchema()
 
-URL_USERS = "http://127.0.0.1:5000/users"
-URL_BOOKS = "http://127.0.0.1:5000/books"
+URL_USERS = "http://127.0.0.1:5001/users"
+URL_BOOKS = "http://127.0.0.1:5001/books"
 
 library = library_user_ns.model('Library ', {
     'id': fields.Integer("Id"),

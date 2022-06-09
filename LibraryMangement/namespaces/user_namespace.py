@@ -2,7 +2,7 @@ from flask import request
 from flask_restx import Resource, fields, Namespace, abort
 from schemas.user_schema import UserSchema
 from models.user_model import UserModel
-from db import db
+from project.db import db
 
 users_ns = Namespace('users', description="User Related operations")
 

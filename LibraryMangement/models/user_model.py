@@ -1,7 +1,6 @@
-from flask_restx import abort
 from sqlalchemy.exc import IntegrityError
 
-from db import db
+from project.db import db
 from typing import List
 
 from exceptions.invalid_operation_exception import InvalidOperationException

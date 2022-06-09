@@ -1,5 +1,5 @@
 from typing import List
-from db import db
+from project.db import db
 
 
 class BookModel(db.Model):

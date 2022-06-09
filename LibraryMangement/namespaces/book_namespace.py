@@ -1,8 +1,9 @@
 from flask import request
 from flask_restx import Resource, fields, Namespace, abort
+
 from schemas.book_schema import BookSchema
 from models.book_model import BookModel
-from db import db
+from project.db import db
 
 books_ns = Namespace('books', description='Books related operations')
 BOOK_NOT_FOUND = "Book not found"
@@ -20,7 +21,6 @@ book = books_ns.model('Book', {
 class BooksList(Resource):
 
     @books_ns.response(200, 'Successful', model=[book])
-    @books_ns.doc(id='get_something')
     def get(self):
         return books_schema.dump(BookModel.find_all()), 200
 

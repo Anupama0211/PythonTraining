@@ -1,4 +1,4 @@
-from ma import ma
+from project.ma import ma
 from models.book_model import BookModel
 
 

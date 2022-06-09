@@ -1,4 +1,4 @@
-from ma import ma
+from project.ma import ma
 from models.user_model import UserModel
 from schemas.book_schema import BookSchema
 

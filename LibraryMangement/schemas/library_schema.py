@@ -1,4 +1,4 @@
-from ma import ma
+from project.ma import ma
 from models.library_model import LibraryModel
 
 
