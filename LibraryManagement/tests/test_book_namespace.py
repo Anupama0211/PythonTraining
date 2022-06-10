@@ -1,7 +1,5 @@
 from unittest.mock import Mock
 
-from flask import request
-
 from models.book_model import BookModel
 from namespaces.book_namespace import book_schema
 
