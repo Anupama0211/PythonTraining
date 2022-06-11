@@ -20,7 +20,7 @@ def test_user_not_found(client):
         'message': 'User not found. You have requested this URI [/users/User] but did you mean /users/<username> or /users ?'}
 
 
-def test_get_books_list(client):
+def test_get_users_list(client):
     UserModel.find_all = Mock(return_value=[{"username": "User"}])
     response = client.get("/users")
     assert response.status_code == 200
@@ -42,7 +42,7 @@ def test_post_user(client):
     user_object.save_to_db.assert_called_once()
 
 
-def test_post_book_raise_validation_error(client):
+def test_post_user_raise_validation_error(client):
     payload = {"username": "Use", "name": "Anupama", "email": "jhaanupama@epam.com"}
     user_object = UserModel()
     user_object.username = "Use"
