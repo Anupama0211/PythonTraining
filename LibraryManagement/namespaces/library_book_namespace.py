@@ -5,7 +5,7 @@ from namespaces.book_namespace import book
 
 library_book_ns = Namespace("library/books", description="Library book related operations")
 
-URL = "http://127.0.0.1:5001/books"
+URL = "http://127.0.0.1:5001/books"#use env file
 
 
 @library_book_ns.route("")
