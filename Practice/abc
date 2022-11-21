@@ -1,0 +1,28 @@
+employee table-
+id, name ,salary
+
+
+GET /employees
+GET /employees/{id}
+PUT /employees/?querr={id}
+POST /employees
+
+
+namespace=
+@ns.expect(model,valid=True)
+post
+
+select * from employee where id=id
+
+select  name
+from employee as e1
+where 1=(select distinct salary
+from employee e2
+where e2.salary>e1.salary)
+
+
+#Check if brackets are balanced in expression: "(a=2,b={)" -> Not balanced , "(a=2,b={})" ->balance
+
+def check
+
+
